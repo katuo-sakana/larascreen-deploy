@@ -29,7 +29,10 @@ class HomeController extends Controller
         Storage::makeDirectory($random_directory);
         $directory_path = storage_path("app/public/{$random_directory}");
 
-        $puppeteer = new Puppeteer;
+        // $puppeteer = new Puppeteer;
+        $puppeteer = new Puppeteer([
+            'executable_path' => base_path(),
+        ]);
         // $browser = $puppeteer->launch();
         $browser = $puppeteer->launch([
             'executablePath' => env('CHROMIUM_PATH'),
